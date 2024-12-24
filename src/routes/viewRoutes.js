@@ -2,13 +2,14 @@ const express = require('express');
 const router = express.Router();
 
 
-router.get('/round-corners', (req, res) => {
-    res.render('RoundCorners');
+router.get('/:page', (req, res) => {
+    const page = req.params.page;
+    res.render(page);
 });
 
-router.get('/round', (req, res) => {
-    res.render('Round');
-});
+// router.get('/round', (req, res) => {
+//     res.render('Round');
+// });
 
 
 module.exports = router;

@@ -7,6 +7,9 @@ const addTextBtn = document.getElementById('addTextBtn');
 const allSizeBtn = document.querySelectorAll('.size-btn');
 const allThicknessBtn = document.querySelectorAll('.thickness-btn');
 const downloadBtn = document.getElementById('downloadBtn');
+const leftPanel = document.querySelector('.image-customization-page .left');
+console.log(leftPanel);
+
 
 let scale = 1;
 let isImageUploaded = false;
@@ -57,13 +60,14 @@ function addResizeHandle(imageElement) {
     const resizeHandle = document.createElement('div');
     resizeHandle.className = 'resize';
     resizeHandle.style.position = 'absolute';
-    resizeHandle.style.right = '20px';
-    resizeHandle.style.bottom = '0px';
+    resizeHandle.style.right = '65%';
+    resizeHandle.style.bottom = '20%';
     resizeHandle.style.cursor = 'nwse-resize';
     resizeHandle.innerText = '+';
+    resizeHandle.style.color = 'blue';
     resizeHandle.style.backgroundColor = 'transparent';
 
-    imageElement.parentElement.appendChild(resizeHandle);
+    leftPanel.appendChild(resizeHandle);
 
     resizeHandle.addEventListener('mousedown', function (e) {
         e.stopPropagation();
@@ -89,14 +93,15 @@ function addRotateHandle(imageElement) {
     const rotateHandle = document.createElement('div');
     rotateHandle.className = 'rotate';
     rotateHandle.style.position = 'absolute';
-    rotateHandle.style.top = '0px';
-    rotateHandle.style.left = '50%';
+    rotateHandle.style.top = '15%';
+    rotateHandle.style.left = '20%';
     rotateHandle.style.transform = 'translateX(-50%)';
     rotateHandle.style.cursor = 'pointer';
     rotateHandle.innerHTML = '&#8635;';
+    rotateHandle.style.color = 'blue';
     rotateHandle.style.backgroundColor = 'transparent';
 
-    imageElement.parentElement.appendChild(rotateHandle);
+    leftPanel.appendChild(rotateHandle);
 
     rotateHandle.addEventListener('mousedown', function (e) {
         e.stopPropagation();
