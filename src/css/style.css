@@ -51,7 +51,7 @@ body {
     background-color: #0056b3;
 }
 
-/* ==============Round Corners CSS */
+/* ==============Round Corners CSS =====================*/
 
 .image-customization-page .container {
     display: flex;
@@ -255,4 +255,23 @@ body {
     font-size: 20px;
     color: #03A9F4;
     border: 1px solid #03A9F4;
+}
+
+
+
+/* ==============Round Corners CSS =====================*/
+.rounded .upload-box {
+    width: 350px;
+    height: 350px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    background: transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.15);
+    background-color: #CCCCCC;
 }
