@@ -8,7 +8,6 @@ const allSizeBtn = document.querySelectorAll('.size-btn');
 const allThicknessBtn = document.querySelectorAll('.thickness-btn');
 const downloadBtn = document.getElementById('downloadBtn');
 const leftPanel = document.querySelector('.image-customization-page .left');
-console.log(leftPanel);
 
 
 let scale = 1;

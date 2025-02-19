@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const PORT = 1818;
+const PORT = 1819;
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -15,12 +15,7 @@ app.get('/', (req, res) => {
         item1: { image: "https://s.omgs.in/wp-content/uploads/2024/01/Round-Corners-shape-min-500x500.jpg", description: "OMGs® Round Corners Acrylic Fridge Magnet\n₹349 – ₹449", type: "round-corners" },
         item2: { image: "https://s.omgs.in/wp-content/uploads/2024/01/circle-shape-min-768x768.jpg", description: "OMGs® Round Acrylic Fridge Magnet\n₹349 – ₹449", type: "round" },
         item3: { image: "https://s.omgs.in/wp-content/uploads/2024/01/Leaf-2-shape-min-2048x2048.jpg", description: "OMGs® Leaf Shape Acrylic Fridge Magnet\n₹349 – ₹449", type: "leaf" },
-        item4: { image: "image4.jpg", description: "Description for item 4" },
-        item5: { image: "image5.jpg", description: "Description for item 5" },
-        item6: { image: "image6.jpg", description: "Description for item 6" },
-        item7: { image: "image5.jpg", description: "Description for item 5" },
-        item8: { image: "image6.jpg", description: "Description for item 6" },
-    };
+        item4: { image: "https://s.omgs.in/wp-content/uploads/2024/01/square-shape-min-2048x2048.jpg", description: "OMGs® Square Acrylic Fridge Magnets\n₹349 – ₹449", type: "square" },    };
     res.render("home", { dictionary });
 });
 

@@ -259,12 +259,17 @@ body {
 
 
 
-/* ==============Round Corners CSS =====================*/
+/* ==============Round CSS =====================*/
 .rounded .upload-box {
     border-radius: 50%;
 }
 
-/* ==============Round Corners CSS =====================*/
+/* ==============Leaf CSS =====================*/
 .leaf .upload-box {
     border-radius: 35% 0 35% 0;
+}
+
+/* ==============Square CSS =====================*/
+.square .upload-box {
+    border-radius: 0;
 }

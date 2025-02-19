@@ -7,9 +7,5 @@ router.get('/:page', (req, res) => {
     res.render(page);
 });
 
-// router.get('/round', (req, res) => {
-//     res.render('Round');
-// });
-
 
 module.exports = router;
