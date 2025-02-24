@@ -224,13 +224,18 @@ function makeResizable(element) {
 
     resizeHandle.addEventListener('mousedown', function (e) {
         e.stopPropagation();
-        const initialWidth = element.offsetWidth;
+        const initialFontSize = parseFloat(window.getComputedStyle(element).fontSize); 
         const initialMouseX = e.clientX;
 
         function resize(e) {
-            const newSize = initialWidth + (e.clientX - initialMouseX);
-            element.style.fontSize = newSize + 'px';
+            const scaleFactor = 0.2; 
+            const newSize = initialFontSize + (e.clientX - initialMouseX) * scaleFactor;
+
+            if (newSize > 10) { 
+                element.style.fontSize = newSize + 'px';
+            }
         }
+
         function stopResizing() {
             document.removeEventListener('mousemove', resize);
             document.removeEventListener('mouseup', stopResizing);
@@ -245,29 +250,39 @@ function makeRotatable(element) {
     const rotateHandle = document.createElement('div');
     rotateHandle.className = 'rotate-handle';
     rotateHandle.style.position = 'absolute';
-    rotateHandle.style.top = '-30px';
+    rotateHandle.style.top = '-20px';
     rotateHandle.style.left = '50%';
     rotateHandle.style.transform = 'translateX(-50%)';
-    rotateHandle.style.cursor = 'pointer';
-    rotateHandle.style.fontSize = '24px';
-    rotateHandle.innerHTML = '&#8635;';
+    rotateHandle.style.width = '20px';
+    rotateHandle.style.height = '20px';
+    rotateHandle.style.background = 'red';
+    rotateHandle.style.cursor = 'grab';
+    rotateHandle.innerText = '⭯';
     rotateHandle.style.display = 'none';
 
     element.appendChild(rotateHandle);
 
+    let isRotating = false;
+    let startAngle = 0;
+
     rotateHandle.addEventListener('mousedown', function (e) {
         e.stopPropagation();
+        isRotating = true;
         const rect = element.getBoundingClientRect();
         const centerX = rect.left + rect.width / 2;
         const centerY = rect.top + rect.height / 2;
 
         function rotate(e) {
-            const angle = Math.atan2(e.clientY - centerY, e.clientX - centerX);
-            const degree = (angle * (180 / Math.PI) + 90) % 360;
-            element.style.transform = `translate(-50%, -50%) rotate(${degree}deg)`;
+            if (isRotating) {
+                const dx = e.clientX - centerX;
+                const dy = e.clientY - centerY;
+                const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+                element.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+            }
         }
 
         function stopRotating() {
+            isRotating = false;
             document.removeEventListener('mousemove', rotate);
             document.removeEventListener('mouseup', stopRotating);
         }
@@ -276,6 +291,7 @@ function makeRotatable(element) {
         document.addEventListener('mouseup', stopRotating);
     });
 }
+
 
 function updatePreview() {
     const text = document.getElementById('modalTextInput').value || 'Preview Text';
